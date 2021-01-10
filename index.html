@@ -47,6 +47,7 @@
       </div>
     </div>
 
+    <!-- data-key is a built-in attribute -->
     <audio data-key="65" src="sounds/clap.wav"></audio>
     <audio data-key="83" src="sounds/hihat.wav"></audio>
     <audio data-key="68" src="sounds/kick.wav"></audio>
@@ -57,29 +58,30 @@
     <audio data-key="75" src="sounds/tom.wav"></audio>
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
-    <script>
-      function playSound(e) {
-        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
-        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-        console.log(key)
-        if (!audio) return // stop function from playing.
-        audio.currentTime = 0
-        audio.play()
-        key.classList.add('playing')
-      }
+    <script src="index.js">
+      // function playSound(e) {
+      //   // 'keydown' attribute gives keyCode
+      //   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+      //   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+      //   console.log(key)
+      //   if (!audio) return // stop function from playing.
+      //   audio.currentTime = 0
+      //   audio.play()
+      //   key.classList.add('playing')
+      // }
 
-      window.addEventListener('keydown', playSound)
+      // window.addEventListener('keydown', playSound)
 
-      function removeTransition(e) {
-        if (e.propertyName !== 'transform') return // skip if it's not a transform
-        this.classList.remove('playing')
-        // console.log(this) -- this is referring to the key element
-      }
+      // function removeTransition(e) {
+      //   if (e.propertyName !== 'transform') return // skip if it's not a transform
+      //   this.classList.remove('playing')
+      //   // console.log(this) -- this is referring to the key element
+      // }
 
-      const keys = document.querySelectorAll('.key')
-      keys.forEach(key => {
-        key.addEventListener('transitionend', removeTransition)
-      })
+      // const keys = document.querySelectorAll('.key')
+      // keys.forEach(key => {
+      //   key.addEventListener('transitionend', removeTransition)
+      // })
     </script>
   </body>
 </html>
